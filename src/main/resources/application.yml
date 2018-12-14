@@ -1,10 +1,10 @@
 ldap:
   context:
-    source: ldaps://directory.re7.lyreco.com/
+    source: ldaps://directory.lyreco.com/
   search:
     base: dc=lyreco,dc=com
     filter: uid={0}
-  enable: false
+  enable: true
 #management
 management:
   security:

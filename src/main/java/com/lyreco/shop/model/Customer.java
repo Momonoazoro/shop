@@ -1,15 +1,20 @@
 package com.lyreco.shop.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Date;
 
-@Getter
-@Setter
+@Data
+@Entity
 public class Customer {
 
-	private String id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	private String firstname;
 	private String lastname;
 	private String address;
@@ -20,21 +25,5 @@ public class Customer {
 	private Date birthdate;
 	private String password;
 	private boolean premium;
-
-	public Customer(String id, String firstname, String lastname, String address, String zipcode, String city, String mail, String phone,
-			Date birthdate, String password, boolean premium) {
-		super();
-		this.id = id;
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.address = address;
-		this.zipcode = zipcode;
-		this.city = city;
-		this.mail = mail;
-		this.phone = phone;
-		this.birthdate = birthdate;
-		this.password = password;
-		this.premium = premium;
-	}
 
 }

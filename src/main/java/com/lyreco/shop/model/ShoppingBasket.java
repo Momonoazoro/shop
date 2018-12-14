@@ -1,23 +1,19 @@
 package com.lyreco.shop.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
 public class ShoppingBasket {
 
-	private String id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	private double totalPrice;
 	private List<SbLine> sbLines;
-
-	public ShoppingBasket(String id, double totalPrice, List<SbLine> sbLines) {
-		super();
-		this.id = id;
-		this.totalPrice = totalPrice;
-		this.sbLines = sbLines;
-	}
 
 }

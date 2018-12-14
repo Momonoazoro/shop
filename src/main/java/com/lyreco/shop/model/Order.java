@@ -1,30 +1,25 @@
 package com.lyreco.shop.model;
 
-import lombok.Getter;
-import lombok.Setter;
-
+import lombok.Data;
+import javax.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import java.io.Serializable;
 import java.util.Date;
 
-@Getter
-@Setter
-public class Order {
+@Data
+@Entity
+public class Order implements Serializable {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	private String orderNo;
 	private ShoppingBasket shoppingBasket;
 	private Date delivered;
 	private Date ordered;
 	private String deliveryAddress;
 	private String billingAddress;
-
-	public Order(String orderNo, ShoppingBasket shoppingBasket, Date delivered, Date ordered, String deliveryAddress,
-			String billingAddress) {
-		super();
-		this.orderNo = orderNo;
-		this.shoppingBasket = shoppingBasket;
-		this.delivered = delivered;
-		this.ordered = ordered;
-		this.deliveryAddress = deliveryAddress;
-		this.billingAddress = billingAddress;
-	}
 
 }

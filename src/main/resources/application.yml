@@ -1,0 +1,14 @@
+ldap:
+  context:
+    source: ldaps://directory.re7.lyreco.com/
+  search:
+    base: dc=lyreco,dc=com
+    filter: uid={0}
+  enable: false
+#management
+management:
+  security:
+    enabled: true
+
+server:
+  port:  8090

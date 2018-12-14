@@ -1,9 +1,12 @@
 package com.lyreco.shop.service;
 
 import com.lyreco.shop.model.Product;
+import com.lyreco.shop.repository.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class ProductService {
 
@@ -27,57 +30,32 @@ public class ProductService {
 	/**
 	 * CRUD PRODUCT
 	 */
-	@Override
+
+	@Autowired
+	private ProductRepository productRepository;
+
 	public void createProduct(Product product) {
 
-		if (product != null) {
-
-			if (getProduct(product.getId()) == null) {
-
-				products.add(product);
-			}
-		}
+		productRepository.save(product);
 
 	}
 
-	@Override
-	public Product getProduct(String id) {
+	public Optional<Product> getProduct(String id) {
 
-		for (Product p : products) {
-
-			if (p.getId() == id) {
-
-				return p;
-			}
-		}
-
-		return null;
+		return productRepository.findById(id);
 	}
 
-	@Override
+
 	public void updateProduct(Product product) {
 
-		Product p = getProduct(product.getId());
-
-		if (p != null) {
-
-			products.remove(p);
-			products.add(product);
-		}
+		productRepository.save(product);
 	}
 
-	@Override
 	public void deleteProduct(String id) {
 
-		Product product = getProduct(id);
-
-		if (product != null) {
-
-			products.remove(product);
-		}
+		productRepository.deleteById(id);
 	}
 
-	@Override
 	public List<Product> searchById(String id) {
 
 		List<Product> productsFiltered = new ArrayList<Product>();
@@ -93,7 +71,6 @@ public class ProductService {
 		return productsFiltered;
 	}
 
-	@Override
 	public List<Product> searchByName(String title) {
 
 		List<Product> productsFiltered = new ArrayList<Product>();
@@ -109,7 +86,6 @@ public class ProductService {
 		return productsFiltered;
 	}
 
-	@Override
 	public List<Product> searchByCategory(String category) {
 
 		List<Product> productsFiltered = new ArrayList<Product>();

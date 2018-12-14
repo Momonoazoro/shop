@@ -1,87 +1,54 @@
 package com.lyreco.shop.service;
 
 import com.lyreco.shop.model.ShoppingBasket;
+import com.lyreco.shop.repository.ShoppingBasketRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class ShoppingBasketService {
 
 	private List<ShoppingBasket> shoppingBaskets = new ArrayList<ShoppingBasket>();
 
-	/**
-	 * @return the list shoppingBaskets
-	 */
 	public List<ShoppingBasket> getShoppingBaskets() {
 		return shoppingBaskets;
 	}
 
-	/**
-	 * @param list
-	 *            shoppingBaskets the listshoppingBaskets to set
-	 */
 	public void setShoppingBaskets(List<ShoppingBasket> shoppingBaskets) {
 		this.shoppingBaskets = shoppingBaskets;
 	}
 
-	@Override
+	@Autowired
+	private ShoppingBasketRepository shoppingBasketRepository;
+
 	public void createShoppingBasket(ShoppingBasket shoppingBasket) {
-		if (shoppingBasket != null) {
-			if (getShoppingBasket(shoppingBasket.getId()) == null) {
-				shoppingBaskets.add(shoppingBasket);
-			}
-		}
+		shoppingBasketRepository.save(shoppingBasket);
 	}
 
-	@Override
-	public ShoppingBasket getShoppingBasket(String id) {
-		for (ShoppingBasket shoppingBasket : shoppingBaskets) {
-			if (id == shoppingBasket.getId()) {
-				return shoppingBasket;
-			}
-		}
-		return null;
+	public Optional<ShoppingBasket> getShoppingBasket(String id) {
+		return shoppingBasketRepository.findById(id);
 	}
 
-	@Override
 	public void updateShoppingBasket(ShoppingBasket shoppingBasket) {
-		if (shoppingBasket != null) {
-			ShoppingBasket sb = getShoppingBasket(shoppingBasket.getId());
-
-			if (sb != null) {
-
-				shoppingBaskets.remove(sb);
-				shoppingBaskets.add(shoppingBasket);
-
-			}
-		}
+		shoppingBasketRepository.save(shoppingBasket);
 	}
 
-	@Override
 	public void deleteShoppingBasket(ShoppingBasket shoppingBasket) {
-		if (shoppingBasket != null) {
-			ShoppingBasket sb = getShoppingBasket(shoppingBasket.getId());
-
-			if (sb != null) {
-
-				shoppingBaskets.remove(sb);
-			}
-		}
+		shoppingBasketRepository.deleteById(shoppingBasket.getId());
 	}
 
-	@Override
 	public void addToShoppingBasket(final String id, final int product) {
 		if (id != null) {
 
 		}
 	}
 
-	@Override
 	public void removeToShoppingBasket(String id) {
 
 	}
 
-	@Override
 	public void updateQuantity(final String id, final int quantity) {
 
 	}

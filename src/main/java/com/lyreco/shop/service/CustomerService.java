@@ -1,61 +1,37 @@
 package com.lyreco.shop.service;
 
 import com.lyreco.shop.model.Customer;
+import com.lyreco.shop.repository.CustomerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Optional;
 
 public class CustomerService {
 
 	private ArrayList<Customer> customers = new ArrayList<Customer>();
 
-	@Override
-	public Customer createCustomer(String id, String firstname, String lastname, String address, String zipcode, String city, String mail,
-			String phone, Date birthdate, String password, boolean premium) {
-		if (id != null && firstname != null) {
-			Customer customer = new Customer(id, firstname, lastname, address, zipcode, city, mail, phone, birthdate, password, premium);
-			customers.add(customer);
-		}
-		return null;
+	@Autowired
+	private CustomerRepository customerRepository;
+
+	public void createCustomer(Customer customer) {
+		customerRepository.save(customer);
 	}
 
-	@Override
-	public Customer getCustomer(String id) {
+	public Optional<Customer> getCustomer(String id) {
 
-		for (Customer customer : customers) {
-
-			if (customer.getId() == id) {
-
-				return customer;
-			}
-
-		}
-
-		return null;
+		return customerRepository.findById(id);
 	}
 
-	@Override
 	public void updateCustomer(Customer customer) {
 
-		if (customer != null) {
-			Customer c = getCustomer(customer.getId());
-
-			if (customer.getId() != null) {
-				customers.remove(c);
-				customers.add(customer);
-			}
-		}
+		customerRepository.save(customer);
 
 	}
-
-	@Override
+	
 	public void deleteCustomer(Customer customer) {
 
-		if (customer != null) {
-			if (customer.getId() != null) {
-				customers.remove(customer);
-			}
-		}
+		customerRepository.deleteById(customer.getId());
 
 	}
 

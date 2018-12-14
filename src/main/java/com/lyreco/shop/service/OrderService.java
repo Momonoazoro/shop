@@ -1,9 +1,12 @@
 package com.lyreco.shop.service;
 
 import com.lyreco.shop.model.Order;
+import com.lyreco.shop.repository.OrderRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class OrderService {
 
@@ -27,55 +30,37 @@ public class OrderService {
 	/**
 	 * @param order
 	 */
+
+	@Autowired
+	private OrderRepository orderRepository;
+
+
 	public void createOrder(Order order) {
-		if (order != null) {
-			if (getOrder(order.getOrderNo()) == null) {
-				listOrder.add(order);
-			}
-		}
-	};
+				orderRepository.save(order);
+
+	}
 
 	/**
 	 * @param orderNo
 	 * @return
 	 */
-	public Order getOrder(String orderNo) {
-		for (Order order : listOrder) {
-			if (orderNo == order.getOrderNo()) {
-				return order;
-			}
-		}
-		return null;
-	};
+	public Optional<Order> getOrder(String orderNo) {
+
+		return orderRepository.findById(orderNo);
+	}
 
 	/**
 	 * @param order
 	 */
 	public void updateOrder(Order order) {
-		if (order != null) {
-			Order o = getOrder(order.getOrderNo());
-
-			if (o != null) {
-
-				listOrder.remove(o);
-				listOrder.add(order);
-
-			}
-		}
-	};
+		orderRepository.save(order);
+	}
 
 	/**
 	 * @param order
 	 */
 	public void deleteOrder(Order order) {
-		if (order != null) {
-			Order o = getOrder(order.getOrderNo());
-
-			if (o != null) {
-
-				listOrder.remove(o);
-			}
-		}
+		orderRepository.deleteById(order.getOrderNo());
 	};
 
 }

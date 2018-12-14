@@ -1,11 +1,12 @@
-package com.lyreco.shop.service;
+package com.lyreco.shop.service.impl;
 
-import com.lyreco.shop.model.Customer;
+import com.lyreco.shop.bean.Customer;
 import com.lyreco.shop.repository.CustomerRepository;
+import com.lyreco.shop.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Optional;
 
-public class CustomerService {
+public class CustomerService implements ICustomerService {
 
 	@Autowired
 	private CustomerRepository customerRepository;

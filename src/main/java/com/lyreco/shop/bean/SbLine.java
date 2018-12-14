@@ -1,7 +1,7 @@
-package com.lyreco.shop.model;
+package com.lyreco.shop.bean;
 
-import lombok.Builder;
 import lombok.Data;
+import lombok.Builder;
 
 @Data
 public class SbLine extends Product {

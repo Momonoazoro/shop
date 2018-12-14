@@ -1,11 +1,10 @@
-package com.lyreco.shop.model;
+package com.lyreco.shop.bean;
 
 import lombok.Data;
-
+import javax.persistence.Id;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.util.Date;
 
 @Data

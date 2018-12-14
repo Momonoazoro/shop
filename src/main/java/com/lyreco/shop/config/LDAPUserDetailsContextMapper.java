@@ -1,4 +1,4 @@
-package com.lyreco.shop.configuration;
+package com.lyreco.shop.config;
 
 import org.springframework.ldap.core.DirContextAdapter;
 import org.springframework.ldap.core.DirContextOperations;

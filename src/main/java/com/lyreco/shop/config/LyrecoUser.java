@@ -1,4 +1,4 @@
-package com.lyreco.shop.configuration;
+package com.lyreco.shop.config;
 
 import lombok.Getter;
 import lombok.Setter;

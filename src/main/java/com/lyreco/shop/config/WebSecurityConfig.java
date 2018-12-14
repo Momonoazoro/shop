@@ -1,4 +1,4 @@
-package com.lyreco.shop.configuration;
+package com.lyreco.shop.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

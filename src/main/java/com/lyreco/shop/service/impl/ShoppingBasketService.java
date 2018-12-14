@@ -1,14 +1,15 @@
-package com.lyreco.shop.service;
+package com.lyreco.shop.service.impl;
 
-import com.lyreco.shop.model.Customer;
-import com.lyreco.shop.model.Product;
-import com.lyreco.shop.model.SbLine;
+import com.lyreco.shop.bean.Customer;
+import com.lyreco.shop.bean.Product;
+import com.lyreco.shop.bean.SbLine;
 import com.lyreco.shop.repository.ProductRepository;
+import com.lyreco.shop.service.IShoppingBasketService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Optional;
 
-public class ShoppingBasketService {
+public class ShoppingBasketService implements IShoppingBasketService {
 
     @Autowired
     private ProductRepository productRepository;

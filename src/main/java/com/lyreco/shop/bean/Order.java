@@ -1,4 +1,4 @@
-package com.lyreco.shop.model;
+package com.lyreco.shop.bean;
 
 import lombok.Data;
 import javax.persistence.Id;

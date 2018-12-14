@@ -1,7 +1,6 @@
 package com.lyreco.shop.repository;
 
-import com.lyreco.shop.model.Product;
-import org.springframework.data.jpa.repository.Query;
+import com.lyreco.shop.bean.Product;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

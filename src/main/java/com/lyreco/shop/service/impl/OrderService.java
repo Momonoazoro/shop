@@ -1,12 +1,13 @@
-package com.lyreco.shop.service;
+package com.lyreco.shop.service.impl;
 
-import com.lyreco.shop.model.Order;
+import com.lyreco.shop.bean.Order;
 import com.lyreco.shop.repository.OrderRepository;
+import com.lyreco.shop.service.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Optional;
 
-public class OrderService {
+public class OrderService implements IOrderService {
 
 	@Autowired
 	private OrderRepository orderRepository;
